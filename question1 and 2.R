@@ -59,7 +59,6 @@ for(i in 1:41)
   pony_matrix[i,3:8] <- pony_matrix[i,3:8]/sum(pony_matrix[i,3:8])
 }
 
-write.csv(pony_matrix,'pony_matrix.csv',row.names = F)
 # we will only consider those who wrote more than two episode, that is
 # three episodes and above
 pony_data <- pony_matrix %>% filter(N > 2) %>% arrange(-N)
@@ -80,8 +79,6 @@ new_pony_data$writer <- str_replace(new_pony_data$writer,'Kevin Burke', 'Kevin B
 new_pony_data$pony <- str_replace(new_pony_data$pony,'Twilight', 'Twilight Sparkle')
 new_pony_data$pony <- str_replace(new_pony_data$pony,'Pinkie', 'Pinkie Pie')
 new_pony_data$pony <- str_replace(new_pony_data$pony,'Rainbow', 'Rainbow Dash')
-
-write.csv(new_pony_data,'new_pony_data.csv',row.names = F)
 
 # For top 9 writers, we plot the propotion chart
 # we use top data.frame to track the top 8 writers
