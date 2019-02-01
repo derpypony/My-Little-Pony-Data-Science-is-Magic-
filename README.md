@@ -8,8 +8,8 @@ The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% ac
 
 3. mlp_song_data.csv: the information of songs in eight seasons.
 
-4. writer_score.csv: MLP writers and number of episodes they wrote, you can generate it from question 1 and 2.R.
+4. writer_score.csv: MLP writers and number of episodes they wrote, you can generate it from R script question 1 and 2.R.
 
-5. question6_data.csv: a dataset needed to answer question 6, but you can generate it from the R scripts question 3.R.
+5. question6_data.csv: a dataset needed to answer question 6, but you can generate it from the R script question 3.R.
 
 The 5 R scripts correspond to the five 6 questions I mentioned in the post.
