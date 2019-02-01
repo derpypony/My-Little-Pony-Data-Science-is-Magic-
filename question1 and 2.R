@@ -3,7 +3,7 @@ options(stringsAsFactors = F)
 full_mlp_script <- read_csv("full_mlp_script.csv")
 mlp_writer <- count(full_mlp_script,writer,sort=T)$writer
 # the mlp_writer vector is a little messy, we clean them
-# first we only choose those write episodes solely 
+# first we only choose those who write episodes solely 
 writer_vector <- subset(mlp_writer,!str_detect(mlp_writer,',|&|;'))
 # now we check who are left
 mlp_writer %>% 
