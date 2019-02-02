@@ -12,4 +12,4 @@ The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% ac
 
 5. question6_data.csv: a dataset needed to answer question 6, but you can generate it from the R script question 3.R.
 
-The 6 R scripts correspond to the five 6 questions I mentioned in the post.
+The 6 R scripts correspond to the 6 questions I mentioned in the post.
