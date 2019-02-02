@@ -50,4 +50,4 @@ new_writer_score <- writer_score %>% select(-2) %>% gather('Positive', 'Negative
 
 new_writer_score %>% ggplot(aes(writer,sent_score,fill=polarity))+
   geom_col()+coord_flip()+labs(x='', y='# Positive/Negative words per episode', 
-                               title = 'Sentiment words useage frequency between writers')
+                               title = 'Sentiment words usage frequency between writers')

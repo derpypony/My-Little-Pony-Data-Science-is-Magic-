@@ -57,10 +57,18 @@ tidy_sent <- writer_score %>% select(-2) %>%
 # and we use prop to represent sentiment score
 # you can only change the names of ponies to recycle the following code
 
-A_R_least<- tidy_sent %>% filter(pony=='Fluttershy'|pony=='Twilight Sparkle') %>% 
+my_pony <- c('Twilight Sparkle', 'Fluttershy', 'Pinkie Pie', 'Rarity', 'Applejack', 'Rainbow Dash')
+
+# use i and j to track ponies
+# you can use three combination 
+# i=1,j=2: i=3,j=4; i=5,j=6 to replicate my result
+i = 5
+j = 6
+
+A_R_least<- tidy_sent %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=-prop) %>% ungroup() %>% mutate(color='Top 5 most negative')
 
-A_R_most<- tidy_sent %>% filter(pony=='Fluttershy'|pony=='Twilight Sparkle') %>% 
+A_R_most<- tidy_sent %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=prop) %>% ungroup() %>% mutate(color='Top 5 most positive')
 
 A_R <- rbind(A_R_least,A_R_most)
@@ -70,9 +78,10 @@ new_A_R <- A_R %>% arrange(pony,prop) %>% mutate(order=1:20)
 new_A_R %>% ggplot(aes(x=order,y=prop,fill=color))+geom_col()+facet_wrap(~pony, scales='free_y')+
   coord_flip()+labs(x='', y='# Average number of positive words minus negative words per line', 
                     subtitle='The top 5 writers who give them most positive and negative personalities',
-                    title='Fluttershy and Twilight Sparkle personalities')+
+                    title=paste0(my_pony[i],' and ', my_pony[j], ' personalities'))+
   scale_x_continuous(
     breaks = new_A_R$order,
     labels = new_A_R$writer,
     expand = c(0,0)
   )
+print(paste0(my_pony[i],' and ', my_pony[j], ' personalities'))

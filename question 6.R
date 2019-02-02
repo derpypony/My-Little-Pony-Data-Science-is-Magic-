@@ -45,8 +45,6 @@ writer_score$writer <- str_replace(writer_score$writer,'Joanna Lewis', 'Joanna L
 writer_score$writer <- str_replace(writer_score$writer,'Kevin Burke', 'Kevin Burke & Chris "Doc" Wyatt')
 
 writer_score$writer <- paste0(writer_score$writer, ' (', writer_score$N, ' episodes)')
-# we add 1 second to each of the writer simply to make plot look nice
-writer_score$song_second <- writer_score$song_second+1
 
 writer_score$writer <- fct_reorder(writer_score$writer,writer_score$song_second)
 
@@ -69,4 +67,4 @@ Q6$writer <- factor(Q6$writer,levels = order)
 Q6 %>% ggplot(aes(writer, score, fill=type))+geom_col(position='dodge')+
   coord_flip()+
   labs(x='',y='# length of songs (second) per episode and numbers of sentiment words per episode',
-       title='Comparision between song length and sentiment words count')
+       title='Comparison between song length and sentiment words count')

@@ -96,12 +96,20 @@ top %>% ggplot(aes(x=writer,y=prop, fill=pony))+geom_col()+
   scale_fill_manual(values= c("#6633CC", "#FF66CC","#00CCFF" ,"#FFFFFF", "#FFFF00", "#FF9933"))
 
 # Next we examine for each pony, who write most lines and who write lest lines
+my_pony <- c('Twilight Sparkle', 'Fluttershy', 'Pinkie Pie', 'Rarity', 'Applejack', 'Rainbow Dash')
+
 new_pony_data$writer <- paste0(new_pony_data$writer, ' (', new_pony_data$N, ' episodes)')
 
-T_F_least <- new_pony_data %>% filter(pony=='Twilight Sparkle'|pony=='Fluttershy') %>% 
+# use i and j to track ponies
+# you can use three combination 
+# i=1,j=2: i=3,j=4; i=5,j=6 to replicate my result
+i = 5
+j = 6
+
+T_F_least <- new_pony_data %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=-prop) %>% ungroup() %>% mutate(color='Last 5')
 
-T_F_most<- new_pony_data %>% filter(pony=='Twilight Sparkle'|pony=='Fluttershy') %>% 
+T_F_most<- new_pony_data %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=prop) %>% ungroup() %>% mutate(color='Top 5')
 
 T_F <- rbind(T_F_least,T_F_most)
@@ -112,11 +120,12 @@ T_F$color <- factor(T_F$color,levels=c('Top 5','Last 5'))
 new_T_F <- T_F %>% arrange(pony,prop) %>% mutate(order=1:20)
 
 new_T_F %>% ggplot(aes(x=order,y=prop,fill=color))+geom_col()+facet_wrap(~pony, scales='free_y')+
-  coord_flip()+labs(x='', y='# Propotion of lines of Fluttershy and Twilight Sparkle', 
-                    title='The top/bottom 5 writers who give Fluttershy and Twilight Sparkle most/least lines')+
+  coord_flip()+labs(x='', y= paste0('# Propotion of lines of ', my_pony[i] ,' and ', my_pony[j]), 
+                    title= paste0('The Top_Bottom 5 writers who give ', my_pony[i] ,' and ', my_pony[j], ' most_least lines'))+
   scale_x_continuous(
     breaks = new_T_F$order,
     labels = new_T_F$writer,
     expand = c(0,0)
   )
+print(paste0('The Top_Bottom 5 writers who give ', my_pony[i] ,' and ', my_pony[j], ' most_least lines'))
 # I omit the the code for the rest of main 6 simply because they are repetitive 

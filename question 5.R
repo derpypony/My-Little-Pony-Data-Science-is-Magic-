@@ -52,12 +52,15 @@ MLP_relation$pony[str_detect(MLP_relation$pony,'Rainbow')] <- 'Rainbow Dash'
 MLP_relation$pony[str_detect(MLP_relation$pony,'Pinkie')] <- 'pinkie Pie'
 MLP_relation$pony[str_detect(MLP_relation$pony,'Twilight')] <- 'Twilight Sparkle'
 
-# now we plot relationship web map
-
 library(igraph)
 library(ggraph)
+# now we plot relationship web map
+# use i to track writer and recycle code
+# 0 < i < 8
+i=7
+
 set.seed(739)
-MLP_relation %>% filter(writer==top_writer$writer[7]) %>% 
+MLP_relation %>% filter(writer==top_writer$writer[i]) %>% 
   graph_from_data_frame() %>%
   ggraph(layout = "fr") +
   geom_edge_link(aes(edge_alpha = relation, 
@@ -70,4 +73,5 @@ MLP_relation %>% filter(writer==top_writer$writer[7]) %>%
   
   theme_void()+
   labs(title = paste0("Mane 6 relationship web of ",
-                      top_writer$writer[7]))
+                      top_writer$writer[i]))
+print(paste0("Mane 6 relationship web of ", top_writer$writer[i]))

@@ -53,19 +53,27 @@ new_pony_data_secondary$pony <- str_replace(new_pony_data_secondary$pony,'Luna',
 
 new_pony_data_secondary$writer <- paste0(new_pony_data_secondary$writer, ' (', new_pony_data_secondary$N, ' episodes)')
 
-# first we recycle the code we use before on Celestia and Luna
-A_R_most<- new_pony_data_secondary %>% filter(pony=='Princess Celestia'|pony=='Princess Luna') %>% 
+my_pony <- c('Princess Celestia', 'Princess Luna', 'Spike', 'CMC')
+# use i and j to track ponies
+# you can use two combination 
+# i=1,j=2: i=3,j=4 to replicate my result
+i = 3
+j = 4
+
+
+A_R_most<- new_pony_data_secondary %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=per_line) %>% ungroup()
 
 new_A_R <- A_R_most %>% arrange(pony,per_line) %>% mutate(order=1:10)
 
 new_A_R %>% ggplot(aes(x=order,y=per_line, fill=pony), fill='Blue')+
   geom_col(show.legend = F)+facet_wrap(~pony, scales='free_y')+
-  coord_flip()+labs(x='', y='# Propotion of lines of Princess Celestia and Princess Luna (per line)', 
-                    title='The top 5 writers who give Princess Celestia and Princess Luna most lines')+
+  coord_flip()+labs(x='', y=paste0('# Propotion of lines of ', my_pony[i], ' and ', my_pony[j], ' (per line)'), 
+                    title=paste0('Top 5 writers who give ', my_pony[i], ' and ', my_pony[j], ' most lines'))+
   scale_x_continuous(
     breaks = new_A_R$order,
     labels = new_A_R$writer,
     expand = c(0,0)
   )
+print(paste0('Top 5 writers who give ', my_pony[i], ' and ', my_pony[j], ' most lines'))
 # we omit the code for other secondary characters because they are repetitive
