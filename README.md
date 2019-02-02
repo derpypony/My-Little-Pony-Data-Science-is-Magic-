@@ -6,7 +6,7 @@ The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% ac
 
 2. clean_dialog.csv: cleaned version of raw_dialog.csv.
 
-3. pony_song_data.csv: the information of songs in eight seasons plus "The Best Gift Ever".
+3. pony_song_data.csv: the information of songs in eight seasons plus "Best Gift Ever".
 
 4. writer_score.csv: MLP writers and number of episodes they wrote, you can generate it from R script question 1.R.
 
