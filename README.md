@@ -1,5 +1,5 @@
 # MLP-writer-data-and-R-scripts
-It's a project using R and employ statistics and text mining technique to find out that do different writers of MLP have different writing styles.
+It's a project using R and employ statistics and text mining technique to find out whether different writers of MLP have different writing styles.
 The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% accurate. There are 7 R scripts and 7 datasets
 
 1. raw_dialog.csv: the transcpits of each episode of the show in raw form (scraped from web and not cleaned).
