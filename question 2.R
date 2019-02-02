@@ -53,7 +53,7 @@ new_pony_data_secondary$pony <- str_replace(new_pony_data_secondary$pony,'Luna',
 
 new_pony_data_secondary$writer <- paste0(new_pony_data_secondary$writer, ' (', new_pony_data_secondary$N, ' episodes)')
 
-# first we recycle the code we use before on Celestia and Luna
+# first we recycle the code we use in question 1.R on Celestia and Luna
 A_R_most<- new_pony_data_secondary %>% filter(pony=='Princess Celestia'|pony=='Princess Luna') %>% 
   group_by(pony) %>% top_n(5, wt=per_line) %>% ungroup()
 
