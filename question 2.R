@@ -53,13 +53,13 @@ new_pony_data_secondary$pony <- str_replace(new_pony_data_secondary$pony,'Luna',
 
 new_pony_data_secondary$writer <- paste0(new_pony_data_secondary$writer, ' (', new_pony_data_secondary$N, ' episodes)')
 
-my_pony <- c('Princess Celestia', 'Princess Luna', 'Spike', 'CMC')
-# use i and j to track ponies
-# you can use two combination 
+# use i and j to track ponies, just like in question 1.R
+# you can use two combinations 
 # i=1,j=2: i=3,j=4 to replicate my result
+my_pony <- c('Princess Celestia', 'Princess Luna', 'Spike', 'CMC')
+
 i = 3
 j = 4
-
 
 A_R_most<- new_pony_data_secondary %>% filter(pony==my_pony[i]|pony==my_pony[j]) %>% 
   group_by(pony) %>% top_n(5, wt=per_line) %>% ungroup()
@@ -76,4 +76,3 @@ new_A_R %>% ggplot(aes(x=order,y=per_line, fill=pony), fill='Blue')+
     expand = c(0,0)
   )
 print(paste0('Top 5 writers who give ', my_pony[i], ' and ', my_pony[j], ' most lines'))
-# we omit the code for other secondary characters because they are repetitive
