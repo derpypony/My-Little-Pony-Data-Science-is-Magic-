@@ -12,4 +12,4 @@ The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% ac
 
 "pony data web scrape.R" contains code I use to scrape data from web. 
 
-"MLP_writer_style.R" contains code I use in kaggle kernal https://www.kaggle.com/liury123/do-writers-have-different-writing-styles-in-mlp
+"MLP_writer_style.R" contains code I use in kaggle kernel https://www.kaggle.com/liury123/do-writers-have-different-writing-styles-in-mlp
