@@ -3,7 +3,7 @@ library(plotly)
 library(htmlwidgets)
 library(IRdisplay)
 options(stringsAsFactors = F)
-clean_dialog <- read_csv('../input/clean_dialog.csv')
+clean_dialog <- read_csv('clean_dialog.csv')
 mlp_writer <- count(clean_dialog,writer,sort=T)$writer
 # The mlp_writer vector is a little messy, we clean them a bit.
 # First we only choose those who write episodes solely 
@@ -187,7 +187,7 @@ give_most_lines('CMC')
 give_most_lines('Spike')
 rm(give_most_lines, pony_data, pony_matrix, new_pony_data_secondary)
 
-pony_synopsis <- read_csv("../input/pony_synopsis.csv")
+pony_synopsis <- read_csv("pony_synopsis.csv")
 writer_score_backup <- writer_score
 writer_score <- writer_score %>% 
   mutate(Positive = 0,
@@ -413,7 +413,7 @@ network_plot('Dave Polsky')
 network_plot('Michael Vogel')
 rm(network_plot, pony_character, writer_score_backup, body, top_writer, clean_dialog)
 
-pony_song_data <- read_csv("../input/pony_song_data.csv")
+pony_song_data <- read_csv("pony_song_data.csv")
 pony_song_data$Length[c(5,8,9,28,44,46,47,49,56,62,64,80,99)] <- 
   c('0:33','4:13','0:42','1:53','2:59','3:16','2:27','2:16','2:17','3:15','3:26','3:03','3:44')
 
