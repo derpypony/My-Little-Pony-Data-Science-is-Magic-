@@ -1,4 +1,4 @@
-# MLP-writer-data-and-R-scripts
+# My-Little-Pony-Data-Science-is-Magic
 It's a project using R and employ statistics and text mining technique to find out whether different writers of MLP have different writing styles.
 The data are all scraped from https://mlp.fandom.com/wiki and may not be 100% accurate. There are 2 R scripts and 4 datasets
 
